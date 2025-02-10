@@ -1,77 +1,79 @@
-﻿namespace Homework2;
+﻿namespace Homework3;
 
 class Program
 {
     static void Main(string[] args)
     {
-        // Ask to input a letter
-        Console.Write("Please input a letter grade: (A, B, C, D, F): ");
-        string grade = Console.ReadLine().ToUpper(); // Converts to uppercase for case-insensitivity
+         {
+        // Taking input from the user
+        Console.Write("Input an integer: ");
+        int N = int.Parse(Console.ReadLine());
 
-        // Check the grade and output corresponding GPA points
-        if (grade == "A")
+        // Checking if the number is prime
+        if (IsPrime(N))
         {
-            Console.WriteLine("GPA point: 4");
-        }
-        else if (grade == "B")
-        {
-            Console.WriteLine("GPA point: 3");
-        }
-        else if (grade == "C")
-        {
-            Console.WriteLine("GPA point: 2");
-        }
-        else if (grade == "D")
-        {
-            Console.WriteLine("GPA point: 1");
-        }
-        else if (grade == "F")
-        {
-            Console.WriteLine("GPA point: 0");
+            Console.WriteLine($"{N} is prime");
         }
         else
         {
-            Console.WriteLine("Wrong Letter Grade!");
+            Console.WriteLine($"{N} is non-prime");
+        }
+    }
+
+    static bool IsPrime(int N)
+    {
+        // Handling special case for numbers less than 2
+        if (N < 2)
+        {
+            return false;
         }
 
-        //Question 2:
-        // Ask the user to input three numbers
-        Console.Write("Please input the first num: ");
-        int num1 = Convert.ToInt16(Console.ReadLine());
+        // Loop from 2 to N-1 to check divisibility
+        for (int i = 2; i <= Math.Sqrt(N); i++)
+        {
+            if (N % i == 0)
+            {
+                return false; // Found a divisor, N is not prime
+            }
+        }
 
-        Console.Write("Please input the second num: ");
-        int num2 = Convert.ToInt16(Console.ReadLine());
+        return true; // No divisors found, N is prime
+        }
 
-        Console.Write("Please input the third num: ");
-        int num3 = Convert.ToInt16(Console.ReadLine());
-
-        // Find the smallest number using nested if statements
-        int smallest;
         
-        if (num1 <= num2)
+        //Question 2
+
+         {
+        // Taking input from the user
+        Console.Write("Assign an int value to N: ");
+        int N = int.Parse(Console.ReadLine());
+
+        for (int i = 0; i < N; i++) // Outer loop for rows
         {
-            if (num1 <= num3)
+            for (int j = 0; j < N; j++) // Inner loop for columns
             {
-                smallest = num1;  
+                Console.Write("# "); // Print hashtag in each position
             }
-            else
-            {
-                smallest = num3;  
-            }
-        }
-        else
-        {
-            if (num2 <= num3)
-            {
-                smallest = num2;  
-            }
-            else
-            {
-                smallest = num3;  
+            Console.WriteLine(); // Move to the next line after each row
             }
         }
 
-        // Print the smallest value
-        Console.WriteLine("The smallest value is: " + smallest);
+
+        //Question 3
+
+        {
+        // Taking input from the user
+        Console.Write("Assign an int value to N: ");
+        int N = int.Parse(Console.ReadLine());
+
+        for (int i = 1; i <= N; i++) // i represents the current row
+        {
+            for (int j = 1; j <= i; j++) // j represents the current column
+            {
+                Console.Write("*"); // Print an asterisk
+            }
+            Console.WriteLine(); // Move to the next line after each row
+            }
+        }
     }
 }
