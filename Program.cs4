@@ -1,0 +1,72 @@
+namespace Homework4;
+
+class Program
+     {
+        static void Main(string[] args)
+        {
+            //Question 1
+            Console.Write("Enter the first number: ");
+            int num1 = int.Parse(Console.ReadLine());
+            Console.Write("Enter the second number: ");
+            int num2 = int.Parse(Console.ReadLine());
+
+            // Determine the largest number
+            int largest = (num1 >= num2) ? num1 : num2;
+            Console.WriteLine("The largest number is: " + largest);
+            
+            
+            
+            
+            //Question 2
+            Console.Write("Enter the number of rows for the triangle (N): ");
+            int n = int.Parse(Console.ReadLine());
+            
+            string shape = "";
+            // Loop until a valid shape ("left" or "right") is entered.
+            while (true)
+            {
+                Console.Write("Enter the shape (left or right): ");
+                shape = Console.ReadLine();
+                if (shape.ToLower() == "left" || shape.ToLower() == "right")
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid shape. Please choose 'left' or 'right'.");
+                }
+            }
+            
+            Console.WriteLine($"\nN: {n}, Shape: {shape}");
+            if (shape.ToLower() == "left")
+            {
+                // Print a left-aligned triangle.
+                for (int i = 1; i <= n; i++)
+                {
+                    for (int j = 1; j <= i; j++)
+                    {
+                        Console.Write("* ");
+                    }
+                    Console.WriteLine();
+                }
+            }
+            else if (shape.ToLower() == "right")
+            {
+                // Print a right-aligned triangle.
+                for (int i = 1; i <= n; i++)
+                {
+                    // Print spaces for right alignment.
+                    for (int s = 1; s <= n - i; s++)
+                    {
+                        Console.Write("  ");
+                    }
+                    for (int j = 1; j <= i; j++)
+                    {
+                        Console.Write("* ");
+                    }
+                    Console.WriteLine();
+                }
+            }
+        }
+    }
+    
