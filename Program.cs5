@@ -1,0 +1,108 @@
+namespace homework5;
+
+class Program
+{
+    static void Main(string[] args)
+        
+        {
+            // Q1: Get 2 integers and output the largest.
+            int largestTwo = Q1_method();
+            Console.WriteLine("The largest of the two numbers is: " + largestTwo);
+
+            Console.WriteLine(); // Blank line for separation
+
+            // Q2: Get 4 integers and output the largest.
+            int largestFour = Q2_method();
+            Console.WriteLine("The largest of the four numbers is: " + largestFour);
+
+            Console.WriteLine(); // Blank line for separation
+
+            // Q3: Account creation process.
+            Console.WriteLine("Account Creation:");
+            createAccount();
+        }
+
+        // Q1_method: Gets 2 integers and returns the largest one.
+        static int Q1_method()
+        {
+            Console.Write("Enter the first integer: ");
+            int num1 = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter the second integer: ");
+            int num2 = int.Parse(Console.ReadLine());
+
+            return (num1 > num2) ? num1 : num2;
+        }
+
+        // Overloaded Q1_method: Accepts two integers as parameters and returns the larger one.
+        static int Q1_method(int a, int b)
+        {
+            return (a > b) ? a : b;
+        }
+
+        // Q2_method: Gets 4 integers, uses Q1_method to determine the largest, and returns it.
+        static int Q2_method()
+        {
+            Console.Write("Enter the first integer (a): ");
+            int a = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter the second integer (b): ");
+            int b = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter the third integer (c): ");
+            int c = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter the fourth integer (d): ");
+            int d = int.Parse(Console.ReadLine());
+
+            // Compare a and b to get max1; compare c and d to get max2;
+            // then compare max1 and max2 to get the overall maximum.
+            int max1 = Q1_method(a, b);
+            int max2 = Q1_method(c, d);
+            int overallMax = Q1_method(max1, max2);
+            return overallMax;
+        }
+
+        // Q3: Calculates age using the current year and returns true if age is >= 18.
+        static bool checkAge(int birth_year)
+        {
+            int currentYear = DateTime.Now.Year;
+            int age = currentYear - birth_year;
+            return (age >= 18);
+        }
+
+        // Q3: Implements the account creation process.
+        static void createAccount()
+        {
+            // Ask user for account details.
+            Console.Write("Enter username: ");
+            string username = Console.ReadLine();
+
+            Console.Write("Enter password: ");
+            string password = Console.ReadLine();
+
+            Console.Write("Enter password again: ");
+            string passwordConfirm = Console.ReadLine();
+
+            Console.Write("Enter birth year: ");
+            int birthYear = int.Parse(Console.ReadLine());
+
+            // Check if the user is at least 18 years old.
+            if (checkAge(birthYear))
+            {
+                // If age is sufficient, then check if both passwords match.
+                if (password == passwordConfirm)
+                {
+                    Console.WriteLine("Account is created successfully");
+                }
+                else
+                {
+                    Console.WriteLine("Wrong password");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Could not create an account");
+            }
+        }
+    }
